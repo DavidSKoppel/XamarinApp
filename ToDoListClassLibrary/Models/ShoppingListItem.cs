@@ -19,8 +19,7 @@ namespace ToDoListClassLibrary.Models
         public string Title { get; set; }
         [Required]
         [Column("checked")]
-        [StringLength(10)]
-        public string Checked { get; set; }
+        public bool Checked { get; set; }
         [Column("shoppinglistId")]
         public int ShoppinglistId { get; set; }
 

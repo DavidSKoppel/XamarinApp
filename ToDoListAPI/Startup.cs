@@ -33,6 +33,7 @@ namespace ToDoListAPI
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ToDoListDBContext>(cnn => cnn.UseSqlServer(connectionString));
             services.AddScoped<IShoppingListRepository, ShoppingListRepository>();
+            services.AddScoped<IShoppingListItemRepository, ShoppingListItemRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ToDoListAPI", Version = "v1" });
