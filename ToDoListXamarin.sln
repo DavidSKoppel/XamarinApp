@@ -7,7 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListXamarin.Android", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListXamarin.iOS", "ToDoListXamarin\ToDoListXamarin.iOS\ToDoListXamarin.iOS.csproj", "{1099BF4A-FA28-475A-B53E-C8FC6C9CE372}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListXamarin", "ToDoListXamarin\ToDoListXamarin\ToDoListXamarin.csproj", "{CCA00EEA-A421-40F7-8E2D-5317ACD709B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoListXamarin", "ToDoListXamarin\ToDoListXamarin\ToDoListXamarin.csproj", "{CCA00EEA-A421-40F7-8E2D-5317ACD709B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListClassLibrary", "ToDoListClassLibrary\ToDoListClassLibrary.csproj", "{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListAPI", "ToDoListAPI\ToDoListAPI.csproj", "{C58B5551-5B66-4B76-BDB8-7192192E8B4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,30 @@ Global
 		{CCA00EEA-A421-40F7-8E2D-5317ACD709B4}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{CCA00EEA-A421-40F7-8E2D-5317ACD709B4}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{CCA00EEA-A421-40F7-8E2D-5317ACD709B4}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Release|iPhone.Build.0 = Release|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{E04FF0E0-6A11-4DFA-A18B-A9C6EE0EA085}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Release|iPhone.Build.0 = Release|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C58B5551-5B66-4B76-BDB8-7192192E8B4C}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
