@@ -14,5 +14,10 @@ namespace ToDoListXamarin
         {
             InitializeComponent();
         }
+
+        private void OnAddItem(object sender, System.EventArgs e)
+        {
+            Application.Current.MainPage = new NavigationPage(new ListCreate());
+        }
     }
 }
