@@ -10,7 +10,7 @@ namespace ToDoListXamarin
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new CreateShoppingList();
         }
 
         protected override void OnStart()
