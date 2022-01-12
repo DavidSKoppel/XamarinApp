@@ -1,27 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ToDoListXamarin"
              x:Class="ToDoListXamarin.MainPage">
 
-    <ContentPage.BindingContext>
-        <local:ToDoListViewModel/>
-    </ContentPage.BindingContext>
-    
     <StackLayout>
-        <Entry Text="{Binding NewTodoInputValue}" x:Name="InputField" Placeholder="Enter a Todo" ReturnCommand="{Binding AddTodoCommand}"/>
-    <ListView x:Name="ToDoList" ItemsSource="{Binding ToDoItems}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <FlexLayout>
-                        <Label Text="{Binding TodoText}" FontSize="Large"/>
-                            <ImageButton Source="delete.png"/>
-                        </FlexLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-    </ListView>
+
     </StackLayout>
 
 </ContentPage>
