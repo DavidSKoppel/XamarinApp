@@ -15,9 +15,11 @@ namespace ToDoListXamarin
             InitializeComponent();
         }
 
-        private void OnAddItem(object sender, System.EventArgs e)
+        private async void OnAddItem(object sender, System.EventArgs e)
         {
-            Application.Current.MainPage = new NavigationPage(new ListCreate());
+
+            await Shell.Current.GoToAsync(nameof(ListCreate));
+            //Application.Current.MainPage = new NavigationPage(new ListCreate());
         }
     }
 }
