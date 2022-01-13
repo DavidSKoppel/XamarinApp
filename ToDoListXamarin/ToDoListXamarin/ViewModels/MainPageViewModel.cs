@@ -7,29 +7,14 @@ namespace ToDoListXamarin
 {
     public class MainPageViewModel
     {
-        public ObservableCollection<ShoppingList> ShoppingLists { get; set; }
+        public ObservableCollection<ShoppingListAndItems> ShoppingLists { get; set; }
         public MainPageViewModel()
         {
-            ShoppingLists = new ObservableCollection<ShoppingList>();
+            ShoppingLists = new ObservableCollection<ShoppingListAndItems>();
 
-            ShoppingLists.Add(new ShoppingList("Todo 1", "12-01-20", "Egg"));
-            ShoppingLists.Add(new ShoppingList("Todo 2", "13-01-20", "Cheese"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
-            ShoppingLists.Add(new ShoppingList("Todo 3", "14-01-20", "Bacon"));
+            ShoppingLists.Add(new ShoppingListAndItems(1, "Todo 1", Convert.ToDateTime("12-01-20")));
+            ShoppingLists.Add(new ShoppingListAndItems(2, "Todo 2", Convert.ToDateTime("12-01-20")));
+            ShoppingLists.Add(new ShoppingListAndItems(3, "Todo 3", Convert.ToDateTime("12-01-20")));
         }
     }
 }

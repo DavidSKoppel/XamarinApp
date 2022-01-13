@@ -6,7 +6,8 @@ namespace ToDoListXamarin
 {
     public class ToDoItem
     {
-        public int Id { get; set; }
+        public int ToDoId { get; set; }
+        public int ShoppingListId { get; set; }
         public string TodoText { get; set; }
         public bool Complete { get; set; }
 

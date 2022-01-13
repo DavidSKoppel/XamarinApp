@@ -5,17 +5,18 @@ using System.Text;
 
 namespace ToDoListXamarin
 {
-    class ShoppingListAndItems
+    public class ShoppingListAndItems
     {
+        public int Id { get; set; }
         public string Title { get; set; }
-        public string ShoppingDate { get; set; }
+        public DateTime ShoppingDate { get; set; }
         public ObservableCollection<ToDoItem> ShoppingItems { get; set; }
 
-        public ShoppingListAndItems(string title, string shoppingDate, ObservableCollection<ToDoItem> shoppingItems)
+        public ShoppingListAndItems(int id, string title, DateTime shoppingDate)
         {
+            Id = id;
             Title = title;
             ShoppingDate = shoppingDate;
-            ShoppingItems = shoppingItems;
         }
     }
 }

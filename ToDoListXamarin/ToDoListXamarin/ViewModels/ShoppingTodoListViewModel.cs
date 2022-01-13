@@ -14,9 +14,7 @@ namespace ToDoListXamarin
         {
             ToDoItems = new ObservableCollection<ToDoItem>();
 
-            ToDoItems.Add(new ToDoItem("todo 1", false));
-            ToDoItems.Add(new ToDoItem("todo 2", false));
-            ToDoItems.Add(new ToDoItem("todo 3", false));
+            ToDoItems.Add(new ToDoItem("Cheese", false));
         }
 
         public ICommand AddTodoCommand => new Command(AddTodoItem);

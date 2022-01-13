@@ -15,7 +15,7 @@ namespace ToDoListXamarin
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ListCreate), typeof(ListCreate));
+            Routing.RegisterRoute(nameof(CreateShoppingList), typeof(CreateShoppingList));
             //Routing.RegisterRoute(nameof(ViewList), typeof(ViewList));
         }
     }
