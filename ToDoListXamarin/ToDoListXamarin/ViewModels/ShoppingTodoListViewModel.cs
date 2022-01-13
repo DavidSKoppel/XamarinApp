@@ -26,5 +26,6 @@ namespace ToDoListXamarin
         {
             ToDoItems.Add(new ToDoItem(NewTodoInputValue, false));
         }
+
     }
 }
