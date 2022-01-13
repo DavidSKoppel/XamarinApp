@@ -1,4 +1,5 @@
 ﻿using System;
+using ToDoListXamarin.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace ToDoListXamarin
         {
             InitializeComponent();
 
-            //MainPage = new CreateShoppingList();
+            //MainPage = new ListItemsView();
             MainPage = new AppShell();
         }
 

@@ -51,7 +51,8 @@ namespace ToDoListAPI.Controllers
                 {
                     Id = shoppinglistitem.Id,
                     Title = shoppinglistitem.Title,
-                    Checked = shoppinglistitem.Checked
+                    Checked = shoppinglistitem.Checked,
+                    ShoppingListId = shoppinglistitem.ShoppinglistId
                 });
             }
             return Ok(shoppingListItemDto);

@@ -11,5 +11,6 @@ namespace ToDoListAPI.Dtos
         public int Id { get; set; }
         public string Title { get; set; }
         public bool Checked { get; set; }
+        public int ShoppingListId { get; set; }
     }
 }
