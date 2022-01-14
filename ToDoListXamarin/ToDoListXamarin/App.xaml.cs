@@ -11,8 +11,8 @@ namespace ToDoListXamarin
         {
             InitializeComponent();
 
-            //MainPage = new ListItemsView();
-            MainPage = new AppShell();
+            MainPage = new ListItemsView();
+            //MainPage = new AppShell();
         }
 
         protected override void OnStart()
