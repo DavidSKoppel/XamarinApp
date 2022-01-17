@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ToDoListXamarin
+namespace ToDoListXamarin.Models
 {
     public class ToDoItem
     {

@@ -4,17 +4,26 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDoListXamarin.ViewModels;
 using Xamarin.Forms;
 
 namespace ToDoListXamarin
 {
     public partial class MainPage : ContentPage
     {
+        MainPageViewModel _viewModel;
         public MainPage()
         {
             InitializeComponent();
+            
+            BindingContext = _viewModel = new MainPageViewModel();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.OnAppearing();
+        }
         private async void OnAddItem(object sender, System.EventArgs e)
         {
 

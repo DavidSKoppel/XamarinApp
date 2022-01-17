@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ShoppingList.Services
+namespace ToDoListXamarin.Services
 {
     public interface IDataStore<T>
     {

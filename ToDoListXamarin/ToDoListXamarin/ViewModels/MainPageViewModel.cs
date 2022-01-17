@@ -1,27 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using Xamarin.Forms;
-using ToDoListXamarin.Services;
-using ShoppingList.Services;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using ToDoListXamarin.Models;
+using ToDoListXamarin.Services;
 
-namespace ToDoListXamarin
+namespace ToDoListXamarin.ViewModels
 {
-    public class MainPageViewModel
+    public class MainPageViewModel : BaseViewModel
     {
-        public IDataStore<ShoppingListAndItems> DataStore => DependencyService.Get<IDataStore<ShoppingListAndItems>>();
-
         public ShoppingListAndItems selectedList;
-        public bool IsBusy { get; set; }
 
-        public ObservableCollection<ShoppingListAndItems> Lists { get;  }
+        public ObservableCollection<ShoppingListAndItems> Lists { get; }
         public Command LoadListsCommand { get; }
         public Command<ShoppingListAndItems> ItemTapped { get; }
         
         public MainPageViewModel()
         {
+            Title = "Main";
             Lists = new ObservableCollection<ShoppingListAndItems>();
             LoadListsCommand = new Command(async () => await LoadShoppingListsCommand());
 
@@ -31,14 +28,39 @@ namespace ToDoListXamarin
         async Task LoadShoppingListsCommand()
         {
             IsBusy = true;
-
-            Lists.Clear();
-            var lists = await DataStore.GetItemsAsync(true);
-            foreach (var list in lists)
+            try
             {
-                Lists.Add(list);
+                Lists.Clear();
+                var lists = await DataStore.GetItemsAsync(true);
+                foreach (var list in lists)
+                {
+                    Lists.Add(list);
+                }
             }
-            IsBusy = false;
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public void OnAppearing()
+        {
+            IsBusy = true;
+            SelectedItem = null;
+        }
+
+        public ShoppingListAndItems SelectedItem
+        {
+            get => selectedList;
+            set
+            {
+                SetProperty(ref selectedList, value);
+                OnItemSelected(value);
+            }
         }
 
         async void OnItemSelected(ShoppingListAndItems obj)

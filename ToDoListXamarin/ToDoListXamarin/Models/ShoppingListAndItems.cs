@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace ToDoListXamarin
+namespace ToDoListXamarin.Models
 {
     public class ShoppingListAndItems
     {
@@ -12,11 +12,8 @@ namespace ToDoListXamarin
         public DateTime ShoppingDate { get; set; }
         public ObservableCollection<ToDoItem> ShoppingItems { get; set; }
 
-        public ShoppingListAndItems(int id, string title, DateTime shoppingDate)
+        public ShoppingListAndItems()
         {
-            Id = id;
-            Title = title;
-            ShoppingDate = shoppingDate;
         }
     }
 }

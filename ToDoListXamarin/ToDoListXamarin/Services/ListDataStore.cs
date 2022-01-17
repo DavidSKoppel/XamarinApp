@@ -1,10 +1,10 @@
-﻿using ShoppingList.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ToDoListXamarin.Models;
 
 namespace ToDoListXamarin.Services
 {
@@ -14,12 +14,13 @@ namespace ToDoListXamarin.Services
         
         public ListDataStore() 
         {
-            lists = new List<ShoppingListAndItems>();
-            
-            lists.Add(new ShoppingListAndItems(1, "Todo 1", Convert.ToDateTime("11-01-20")));
-            lists.Add(new ShoppingListAndItems(2, "Todo 2", Convert.ToDateTime("12-01-20")));
-            lists.Add(new ShoppingListAndItems(3, "Todo 3", Convert.ToDateTime("13-01-20")));
-            lists.Add(new ShoppingListAndItems(4, "Todo 4", Convert.ToDateTime("14-01-20")));
+            lists = new List<ShoppingListAndItems>()
+            {
+                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")},
+                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")},
+                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")},
+                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")}
+            };
         }
 
         public async Task<bool> AddItemAsync(ShoppingListAndItems item)
