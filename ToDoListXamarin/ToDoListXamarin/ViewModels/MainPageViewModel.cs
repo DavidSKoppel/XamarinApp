@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text;
@@ -9,20 +8,71 @@ using System.Windows.Input;
 using ToDoListXamarin.Models;
 using ToDoListXamarin.Views;
 using Xamarin.Forms;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using ToDoListXamarin.Models;
+using ToDoListXamarin.Services;
 
-namespace ToDoListXamarin
+namespace ToDoListXamarin.ViewModels
 {
-    public class MainPageViewModel
+    public class MainPageViewModel : BaseViewModel
     {
+        public ShoppingListAndItems selectedList;
         public List<ShoppingList> ShoppingList { get; set; } = new List<ShoppingList>();
 
+        public ObservableCollection<ShoppingListAndItems> Lists { get; }
+        public Command LoadListsCommand { get; }
         public Command<ShoppingListAndItems> ItemTapped { get; }
+        
         public ObservableCollection<ShoppingList> ShoppingListItems { get; set; } = new ObservableCollection<ShoppingList>();
 
         /*        public ObservableCollection<ShoppingListAndItems> ShoppingLists { get; set; }
         */
         public MainPageViewModel()
         {
+            Title = "Main";
+            Lists = new ObservableCollection<ShoppingListAndItems>();
+            LoadListsCommand = new Command(async () => await LoadShoppingListsCommand());
+
+            ItemTapped = new Command<ShoppingListAndItems>(OnItemSelected);
+        }
+
+        async Task LoadShoppingListsCommand()
+        {
+            IsBusy = true;
+            try
+            {
+                Lists.Clear();
+                var lists = await DataStore.GetItemsAsync(true);
+                foreach (var list in lists)
+                {
+                    Lists.Add(list);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
+
+        public void OnAppearing()
+        {
+            IsBusy = true;
+            SelectedItem = null;
+        }
+
+        public ShoppingListAndItems SelectedItem
+        {
+            get => selectedList;
+            set
+            {
+                SetProperty(ref selectedList, value);
+                OnItemSelected(value);
+            }
             ShowShoppingList();
             
 /*            ItemTapped = new Command<ShoppingListAndItems>(OnItemSeleceted);
@@ -33,32 +83,17 @@ namespace ToDoListXamarin
             ShoppingLists.Add(new ShoppingListAndItems(3, "Todo 3", Convert.ToDateTime("12-01-20")));*/
         }
 
+        async void OnItemSelected(ShoppingListAndItems obj)
+        {
+            if (obj == null)
+                return;
         /*        async void OnItemSeleceted(ShoppingListAndItems obj)
                 {
                     if (obj == null)
                         return;
 
-                    // This will push the ItemDetailPage onto the navigation stack
-                    //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
-                }*/
-
-        public ICommand LabelCommand => new Command(TitleClicks);
-
-        private async void TitleClicks()
-        {
-            await Shell.Current.GoToAsync(nameof(ListItemsView));
-        }
-
-        public async void ShowShoppingList()
-        {
-            string uri = "http://10.130.54.140:5000/api/ShoppingLists";
-            HttpClient client = new HttpClient();
-            string response = await client.GetStringAsync(uri);
-            List<ShoppingList> myList = JsonConvert.DeserializeObject<List<ShoppingList>>(response);
-            foreach (ShoppingList v in myList)
-            {
-                ShoppingListItems.Add(new ShoppingList(v.Id, v.Title));
-            }
+            // This will push the ItemDetailPage onto the navigation stack
+            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
     }
 }

@@ -8,11 +8,11 @@ using ToDoListClassLibrary.Models;
 
 namespace ToDoListAPI.Services
 {
-        public class ShoppingListItemRepository : GenericRepository<ShoppingListItem, ToDoListDBContext>, IShoppingListItemRepository
+    public class ShoppingListItemRepository : GenericRepository<ShoppingListItem, ToDoListDBContext>, IShoppingListItemRepository
+    {
+        public ShoppingListItemRepository(ToDoListDBContext dbcontext)
+            : base(dbcontext)
         {
-            public ShoppingListItemRepository(ToDoListDBContext dbcontext)
-                : base(dbcontext)
-            {
 
             }
 

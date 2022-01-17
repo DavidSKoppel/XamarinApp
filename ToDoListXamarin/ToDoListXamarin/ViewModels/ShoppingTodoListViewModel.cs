@@ -5,8 +5,9 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using ToDoListXamarin;
+using ToDoListXamarin.Models;
 
-namespace ToDoListXamarin
+namespace ToDoListXamarin.ViewModels
 {
     public class ShoppingTodoListViewModel
     {
