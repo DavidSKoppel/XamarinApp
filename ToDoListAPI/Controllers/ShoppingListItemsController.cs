@@ -19,19 +19,6 @@ namespace ToDoListAPI.Controllers
             _shoppingListItemRepository = ShoppingListItemRepository;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetShoppingListItem(int id)
-        {
-            if (!await _shoppingListItemRepository.entityExists(id))
-                return NotFound();
-            var product = await _shoppingListItemRepository.GetById(id);
-
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            return Ok(product);
-        }
-
         [HttpGet]
         [ProducesResponseType(400)]
         public async Task<IActionResult> GetShoppingListItemLists()
@@ -115,6 +102,40 @@ namespace ToDoListAPI.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpGet("{shoppingListId}")]
+        public async Task<IActionResult> GetItemsByShoppingListId(int shoppingListId)
+        {
+            ICollection<ShoppingListItem> items;
+
+            items = await _shoppingListItemRepository.GetItemsListByShoppingListId(shoppingListId);
+
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(items);
+            /*            var shoppinglistItems = await _shoppingListItemRepository.GetItemsListByShoppingListId(shoppingListId);
+
+                        if (!ModelState.IsValid)
+                        {
+                            return BadRequest(ModelState);
+                        }
+
+                        var shoppingListItemDto = new List<ShoppingListItemDto>();
+
+                        foreach (var shoppinglistitem in shoppinglistItems)
+                        {
+                            shoppingListItemDto.Add(new ShoppingListItemDto
+                            {
+                                Id = shoppinglistitem.Id,
+                                Title = shoppinglistitem.Title,
+                                Checked = shoppinglistitem.Checked,
+                                ShoppingListId = shoppinglistitem.ShoppinglistId
+                            });
+                        }
+                        return Ok(shoppingListItemDto);*/
         }
 
 

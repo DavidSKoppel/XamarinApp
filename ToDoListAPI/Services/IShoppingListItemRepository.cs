@@ -9,6 +9,6 @@ namespace ToDoListAPI.Services
 {
     public interface IShoppingListItemRepository : IGenericRepository<ShoppingListItem>
     {
-
+        Task<ICollection<ShoppingListItem>> GetItemsListByShoppingListId(int shoppingListId);
     }
 }
