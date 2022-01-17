@@ -5,7 +5,9 @@ using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using ToDoListXamarin.Models;
+using ToDoListXamarin.Views;
 using Xamarin.Forms;
 
 namespace ToDoListXamarin
@@ -31,16 +33,21 @@ namespace ToDoListXamarin
             ShoppingLists.Add(new ShoppingListAndItems(3, "Todo 3", Convert.ToDateTime("12-01-20")));*/
         }
 
-/*        async void OnItemSeleceted(ShoppingListAndItems obj)
+        /*        async void OnItemSeleceted(ShoppingListAndItems obj)
+                {
+                    if (obj == null)
+                        return;
+
+                    // This will push the ItemDetailPage onto the navigation stack
+                    //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
+                }*/
+
+        public ICommand LabelCommand => new Command(TitleClicks);
+
+        private async void TitleClicks()
         {
-            if (obj == null)
-                return;
-
-            // This will push the ItemDetailPage onto the navigation stack
-            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
-        }*/
-
-        
+            await Shell.Current.GoToAsync(nameof(ListItemsView));
+        }
 
         public async void ShowShoppingList()
         {
