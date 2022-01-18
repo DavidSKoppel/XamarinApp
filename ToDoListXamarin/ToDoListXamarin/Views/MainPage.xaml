@@ -41,7 +41,7 @@
                             <Label Grid.Column="1"
                                 Text="{Binding Title}"
                                 FontAttributes="Italic"/>
-                            <Label Grid.Column="1"
+                            <!--<Label Grid.Column="1"
                                 Text="{Binding ShoppingItems}"
                                 FontAttributes="Italic"
                                 VerticalOptions="End" />
@@ -51,7 +51,7 @@
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:CreateShoppingList}}, Path=ItemTapped}"
                                     CommandParameter="{Binding .}">
                                 </TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
+                            </Grid.GestureRecognizers>-->
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

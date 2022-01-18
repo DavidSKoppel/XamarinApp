@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoListXamarin.Models;
@@ -11,16 +13,19 @@ namespace ToDoListXamarin.Services
     public class ListDataStore : IDataStore<ShoppingListAndItems>
     {
         public List<ShoppingListAndItems> lists;
-        
-        public ListDataStore() 
+
+        public ListDataStore()
         {
-            lists = new List<ShoppingListAndItems>()
-            {
-                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")},
-                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")},
-                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")},
-                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")}
-            };
+            lists = new List<ShoppingListAndItems>();
+            ShowShoppingList();
+        }
+
+        public async void ShowShoppingList()
+        {
+            string uri = "http://10.130.54.140:5000/api/ShoppingLists";
+            HttpClient client = new HttpClient();
+            string response = await client.GetStringAsync(uri);
+            lists = JsonConvert.DeserializeObject<List<ShoppingListAndItems>>(response);
         }
 
         public async Task<bool> AddItemAsync(ShoppingListAndItems item)
