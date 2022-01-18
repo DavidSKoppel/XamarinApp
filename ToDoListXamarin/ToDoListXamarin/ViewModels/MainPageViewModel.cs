@@ -41,6 +41,7 @@ namespace ToDoListXamarin.ViewModels
             IsBusy = true;
             try
             {
+                await Task.Delay(3000);
                 Lists.Clear();
                 var lists = await DataStore.GetItemsAsync(true);
                 foreach (var list in lists)
@@ -87,7 +88,7 @@ namespace ToDoListXamarin.ViewModels
             if (item == null)
                 return;
                 // This will push the ItemDetailPage onto the navigation stack
-            //await Shell.Current.GoToAsync($"{nameof(ListItemViewModel)}?{nameof(ListItemViewModel.ItemId)}={item.Id}");
+            await Shell.Current.GoToAsync($"{nameof(ListItemsView)}?{nameof(ListItemViewModel.ItemId)}={item.Id}");
         }
     }
 }

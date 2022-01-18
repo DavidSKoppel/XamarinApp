@@ -7,7 +7,6 @@
     
     <ContentPage.Content>
         <StackLayout>
-            <Button x:Name="btn" Text="Click me!" Clicked="OnButton_Clicked"/>
             <ListView x:Name="ItemListView" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>

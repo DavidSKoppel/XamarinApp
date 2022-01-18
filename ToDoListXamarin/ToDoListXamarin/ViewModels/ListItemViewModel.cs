@@ -19,6 +19,7 @@ namespace ToDoListXamarin.ViewModels
         private string shoppingdate;
 
         public string Id { get; set; }
+
         public string Title
         {
             get => title;
