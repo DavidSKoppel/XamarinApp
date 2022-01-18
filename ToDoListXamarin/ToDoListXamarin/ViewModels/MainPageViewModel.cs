@@ -21,7 +21,6 @@ namespace ToDoListXamarin.ViewModels
             Title = "Main";
             Lists = new ObservableCollection<ShoppingListAndItems>();
             LoadListsCommand = new Command(async () => await LoadShoppingListsCommand());
-
             ItemTapped = new Command<ShoppingListAndItems>(OnItemSelected);
         }
 
@@ -30,6 +29,7 @@ namespace ToDoListXamarin.ViewModels
             IsBusy = true;
             try
             {
+                await Task.Delay(3000);
                 Lists.Clear();
                 var lists = await DataStore.GetItemsAsync(true);
                 foreach (var list in lists)

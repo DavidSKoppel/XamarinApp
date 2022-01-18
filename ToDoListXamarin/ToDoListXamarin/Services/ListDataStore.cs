@@ -12,7 +12,7 @@ namespace ToDoListXamarin.Services
 {
     public class ListDataStore : IDataStore<ShoppingListAndItems>
     {
-        public List<ShoppingListAndItems> lists;
+        public List<ShoppingListAndItems> lists { get; set; }
 
         public ListDataStore()
         {
