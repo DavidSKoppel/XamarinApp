@@ -16,7 +16,7 @@ namespace ToDoListXamarin.ViewModels
         {
             ToDoItems = new ObservableCollection<ToDoItem>();
 
-            ToDoItems.Add(new ToDoItem("Cheese", false));
+            ToDoItems.Add(new ToDoItem(1, "Cheese", false, 1));
         }
 
         public ICommand AddTodoCommand => new Command(AddTodoItem);
@@ -26,7 +26,7 @@ namespace ToDoListXamarin.ViewModels
         public string NewTodoInputValue { get; set; }
         void AddTodoItem()
         {
-            ToDoItems.Add(new ToDoItem(NewTodoInputValue, false));
+            ToDoItems.Add(new ToDoItem(1, NewTodoInputValue, false, 1));
         }
 
         void SaveListCommand()

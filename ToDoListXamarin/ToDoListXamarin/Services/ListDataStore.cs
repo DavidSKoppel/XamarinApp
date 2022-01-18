@@ -13,15 +13,15 @@ namespace ToDoListXamarin.Services
     public class ListDataStore : IDataStore<ShoppingListAndItems>
     {
         public List<ShoppingListAndItems> lists { get; set; }
-
-        public ListDataStore()
+        
+        public ListDataStore() 
         {
             lists = new List<ShoppingListAndItems>();
             ShowShoppingList();
         }
 
         public async void ShowShoppingList()
-        {
+            {
             string uri = "http://10.130.54.140:5000/api/ShoppingLists";
             HttpClient client = new HttpClient();
             string response = await client.GetStringAsync(uri);

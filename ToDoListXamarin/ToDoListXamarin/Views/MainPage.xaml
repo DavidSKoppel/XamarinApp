@@ -15,7 +15,7 @@
 
     <StackLayout Margin="20,35,20,20">
         <RefreshView x:DataType="local2:MainPageViewModel" Command="{Binding LoadListsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-            <CollectionView ItemsSource="{Binding Lists}" >
+            <CollectionView ItemsSource="{Binding Lists}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
                     Orientation="Vertical" 
@@ -41,17 +41,17 @@
                             <Label Grid.Column="1"
                                 Text="{Binding Title}"
                                 FontAttributes="Italic"/>
-                            <!--<Label Grid.Column="1"
+                            <Label Grid.Column="1"
                                 Text="{Binding ShoppingItems}"
                                 FontAttributes="Italic"
                                 VerticalOptions="End" />
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer 
                                     NumberOfTapsRequired="1"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:CreateShoppingList}}, Path=ItemTapped}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local2:MainPageViewModel}}, Path=ItemTapped}"
                                     CommandParameter="{Binding .}">
                                 </TapGestureRecognizer>
-                            </Grid.GestureRecognizers>-->
+                            </Grid.GestureRecognizers>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

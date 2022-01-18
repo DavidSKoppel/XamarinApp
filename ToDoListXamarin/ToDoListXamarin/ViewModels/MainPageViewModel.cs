@@ -1,26 +1,38 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.ObjectModel;
-using Xamarin.Forms;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
+using System.Windows.Input;
 using ToDoListXamarin.Models;
+using ToDoListXamarin.Views;
+using Xamarin.Forms;
+using System.Diagnostics;
 using ToDoListXamarin.Services;
+using System.Collections.Generic;
 
 namespace ToDoListXamarin.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
         public ShoppingListAndItems selectedList;
+        public List<ShoppingList> ShoppingList { get; set; } = new List<ShoppingList>();
 
         public ObservableCollection<ShoppingListAndItems> Lists { get; }
         public Command LoadListsCommand { get; }
         public Command<ShoppingListAndItems> ItemTapped { get; }
         
+        public ObservableCollection<ShoppingList> ShoppingListItems { get; set; } = new ObservableCollection<ShoppingList>();
+
+        /*        public ObservableCollection<ShoppingListAndItems> ShoppingLists { get; set; }
+        */
         public MainPageViewModel()
         {
             Title = "Main";
             Lists = new ObservableCollection<ShoppingListAndItems>();
             LoadListsCommand = new Command(async () => await LoadShoppingListsCommand());
+
             ItemTapped = new Command<ShoppingListAndItems>(OnItemSelected);
         }
 
@@ -29,7 +41,6 @@ namespace ToDoListXamarin.ViewModels
             IsBusy = true;
             try
             {
-                await Task.Delay(3000);
                 Lists.Clear();
                 var lists = await DataStore.GetItemsAsync(true);
                 foreach (var list in lists)
@@ -61,15 +72,22 @@ namespace ToDoListXamarin.ViewModels
                 SetProperty(ref selectedList, value);
                 OnItemSelected(value);
             }
+            //ShowShoppingList();
+            
+/*            ItemTapped = new Command<ShoppingListAndItems>(OnItemSeleceted);
+*//*            ShoppingLists = new ObservableCollection<ShoppingListAndItems>();
+            
+            ShoppingLists.Add(new ShoppingListAndItems(1, "Todo 1", Convert.ToDateTime("12-01-20")));
+            ShoppingLists.Add(new ShoppingListAndItems(2, "Todo 2", Convert.ToDateTime("12-01-20")));
+            ShoppingLists.Add(new ShoppingListAndItems(3, "Todo 3", Convert.ToDateTime("12-01-20")));*/
         }
 
-        async void OnItemSelected(ShoppingListAndItems obj)
+        async void OnItemSelected(ShoppingListAndItems item)
         {
-            if (obj == null)
+            if (item == null)
                 return;
-
-            // This will push the ItemDetailPage onto the navigation stack
-            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
+                // This will push the ItemDetailPage onto the navigation stack
+            //await Shell.Current.GoToAsync($"{nameof(ListItemViewModel)}?{nameof(ListItemViewModel.ItemId)}={item.Id}");
         }
     }
 }

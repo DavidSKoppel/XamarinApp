@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoListXamarin.ViewModels;
+using ToDoListXamarin.Views;
 using Xamarin.Forms;
 
 namespace ToDoListXamarin
