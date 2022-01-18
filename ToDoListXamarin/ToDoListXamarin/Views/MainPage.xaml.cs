@@ -27,7 +27,6 @@ namespace ToDoListXamarin
         }
         private async void OnAddItem(object sender, System.EventArgs e)
         {
-
             await Shell.Current.GoToAsync(nameof(CreateShoppingList));
             //Application.Current.MainPage = new NavigationPage(new ListCreate());
         }

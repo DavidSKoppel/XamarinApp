@@ -16,10 +16,10 @@ namespace ToDoListXamarin.Services
         {
             lists = new List<ShoppingListAndItems>()
             {
-                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")},
-                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")},
-                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")},
-                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-20")}
+                new ShoppingListAndItems {Id = 1, Title = "Todo 1", ShoppingDate = Convert.ToDateTime("11-01-2022")},
+                new ShoppingListAndItems {Id = 2, Title = "Todo 2", ShoppingDate = Convert.ToDateTime("11-02-2022")},
+                new ShoppingListAndItems {Id = 3, Title = "Todo 3", ShoppingDate = Convert.ToDateTime("11-03-2022")},
+                new ShoppingListAndItems {Id = 4, Title = "Todo 4", ShoppingDate = Convert.ToDateTime("11-04-2022")}
             };
         }
 
