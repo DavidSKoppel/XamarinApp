@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,28 +11,52 @@ using Xamarin.Forms;
 
 namespace ToDoListXamarin.ViewModels
 {
-    public class ListItemViewModel
+    [QueryProperty(nameof(ItemId), nameof(ItemId))]
+    public class ListItemViewModel : BaseViewModel
     {
-/*        public ObservableCollection<ToDoItem> ToDoItems { get; set; }
-        private readonly HttpClient _client = new HttpClient();
-        private const string url = "http://10.130.54.140:5000/api/ShoppingListItems";
+        private int itemId;
+        private string title;
+        private string shoppingdate;
 
-        public ListItemViewModel()
+        public string Id { get; set; }
+        public string Title
         {
-            ToDoItems = new ObservableCollection<ToDoItem>();
-            ToDoItems.Add(new ToDoItem("todo 1", false));
-            ToDoItems.Add(new ToDoItem("todo 2", false));
-            ToDoItems.Add(new ToDoItem("todo 3", false));
+            get => title;
+            set => SetProperty(ref title, value);
         }
 
-        public async void OnAppearing()
+        public string ShoppingDate
         {
-            string responsecontent = await _client.GetStringAsync(url);
-            List<ToDoItem> myList = JsonConvert.DeserializeObject<List<ToDoItem>>(responsecontent);
-            ToDoItems = new ObservableCollection<ToDoItem>(myList);
-            ItemListView.ItemSource = ToDoItems;
-            base.OnAppearing();
-        }*/
+            get => shoppingdate;
+            set => SetProperty(ref shoppingdate, value);
+        }
 
+        public int ItemId
+        {
+            get
+            {
+                return itemId;
+            }
+            set
+            {
+                itemId = value;
+                LoadItemId(value);
+            }
+        }
+
+        public async void LoadItemId(int itemId)
+        {
+            try
+            {
+                var item = await DataStore.GetItemAsync(itemId);
+                Id = item.Id.ToString();
+                Title = item.Title;
+                ShoppingDate = item.ShoppingDate.ToString();
+            }
+            catch (Exception)
+            {
+                Debug.WriteLine("Failed to Load Item");
+            }
+        }
     }
 }

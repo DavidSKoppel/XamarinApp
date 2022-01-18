@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoListXamarin.Models;
+using ToDoListXamarin.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,6 +20,8 @@ namespace ToDoListXamarin.Views
         public ListItemsView()
         {
             InitializeComponent();
+            
+            BindingContext = new ListItemViewModel();
         }
 
         private ObservableCollection<ToDoItem> ToDoItems { get; set; }

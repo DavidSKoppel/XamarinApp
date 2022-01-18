@@ -8,10 +8,9 @@ using System.Windows.Input;
 using ToDoListXamarin.Models;
 using ToDoListXamarin.Views;
 using Xamarin.Forms;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using ToDoListXamarin.Models;
 using ToDoListXamarin.Services;
+using System.Collections.Generic;
 
 namespace ToDoListXamarin.ViewModels
 {
@@ -73,7 +72,7 @@ namespace ToDoListXamarin.ViewModels
                 SetProperty(ref selectedList, value);
                 OnItemSelected(value);
             }
-            ShowShoppingList();
+            //ShowShoppingList();
             
 /*            ItemTapped = new Command<ShoppingListAndItems>(OnItemSeleceted);
 *//*            ShoppingLists = new ObservableCollection<ShoppingListAndItems>();
@@ -83,17 +82,12 @@ namespace ToDoListXamarin.ViewModels
             ShoppingLists.Add(new ShoppingListAndItems(3, "Todo 3", Convert.ToDateTime("12-01-20")));*/
         }
 
-        async void OnItemSelected(ShoppingListAndItems obj)
+        async void OnItemSelected(ShoppingListAndItems item)
         {
-            if (obj == null)
+            if (item == null)
                 return;
-        /*        async void OnItemSeleceted(ShoppingListAndItems obj)
-                {
-                    if (obj == null)
-                        return;
-
-            // This will push the ItemDetailPage onto the navigation stack
-            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
+                // This will push the ItemDetailPage onto the navigation stack
+            //await Shell.Current.GoToAsync($"{nameof(ListItemViewModel)}?{nameof(ListItemViewModel.ItemId)}={item.Id}");
         }
     }
 }
