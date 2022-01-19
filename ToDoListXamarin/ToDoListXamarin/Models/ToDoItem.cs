@@ -16,9 +16,8 @@ namespace ToDoListXamarin.Models
         [JsonProperty("complete")]
         public bool Complete { get; set; }
 
-        public ToDoItem(int toDoId, string todoText, bool complete, int shoppingListId)
+        public ToDoItem(string todoText, bool complete, int shoppingListId)
         {
-            ToDoId = toDoId;
             TodoText = todoText;
             Complete = complete;
             ShoppingListId = shoppingListId;

@@ -7,13 +7,14 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using ToDoListXamarin.Models;
+using Ubiety.Dns.Core;
 
 namespace ToDoListXamarin.Services
 {
     public class ListDataStore : IDataStore<ShoppingListAndItems>
     {
         public ObservableCollection<ShoppingListAndItems> lists;
-        
+
         public ListDataStore() 
         {
             lists = new ObservableCollection<ShoppingListAndItems>();
@@ -28,10 +29,11 @@ namespace ToDoListXamarin.Services
             lists = JsonConvert.DeserializeObject<ObservableCollection<ShoppingListAndItems>>(response);
         }
 
+
+
         public async Task<bool> AddItemAsync(ShoppingListAndItems item)
         {
             lists.Add(item);
-
             return await Task.FromResult(true);
         }
 
@@ -50,6 +52,7 @@ namespace ToDoListXamarin.Services
 
         public async Task<IEnumerable<ShoppingListAndItems>> GetItemsAsync(bool forceRefresh = false)
         {
+            await Task.Delay(2000);
             return await Task.FromResult(lists);
         }
 

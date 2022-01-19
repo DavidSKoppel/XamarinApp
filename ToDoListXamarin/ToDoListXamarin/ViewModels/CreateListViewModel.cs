@@ -7,6 +7,9 @@ using Xamarin.Forms;
 using ToDoListXamarin;
 using ToDoListXamarin.Models;
 using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json;
+using Ubiety.Dns.Core;
 
 namespace ToDoListXamarin.ViewModels
 {
@@ -16,7 +19,7 @@ namespace ToDoListXamarin.ViewModels
         public CreateListViewModel()
         {
             ToDoItems = new ObservableCollection<ToDoItem>();
-            ToDoItems.Add(new ToDoItem(1, "Cheese", false, 1));
+            ToDoItems.Add(new ToDoItem("Cheese", false, 1));
 
             SaveCommand = new Command(SaveListCommandAsync);
             AddTodoCommand = new Command(AddTodoItem);
@@ -29,31 +32,33 @@ namespace ToDoListXamarin.ViewModels
         public string NewTodoInputValue { get; set; }
         public void AddTodoItem()
         {
-            int newTodoId = 0;
-            foreach (var todoids in ToDoItems)
-            {
-                if (todoids.ToDoId > newTodoId)
-                    newTodoId = todoids.ToDoId;
-            }
-            ToDoItems.Add(new ToDoItem(newTodoId+1, NewTodoInputValue, false, 1));
+            ToDoItems.Add(new ToDoItem(NewTodoInputValue, false, 1));
         }
 
         public async void SaveListCommandAsync()
         {
-            List<ShoppingListAndItems> templist = new List<ShoppingListAndItems>(await DataStore.GetItemsAsync());
+/*            List<ShoppingListAndItems> templist = new List<ShoppingListAndItems>(await DataStore.GetItemsAsync());
             int newId = 0;
             foreach(var numlist in templist) 
             {
                 if (numlist.Id > newId)
                     newId = numlist.Id;
-            }
+            }*/
             ShoppingListAndItems list = new ShoppingListAndItems()
             {
-                Id = newId + 1,
                 Title = NewListTitle,
                 ShoppingDate = SelectedListDate,
-                ShoppingItems = ToDoItems
+                //ShoppingItems = ToDoItems
             };
+
+            string url = "http://10.130.54.140:5000/api/ShoppingLists";
+            HttpClient client = new HttpClient();
+            string jsonData = JsonConvert.SerializeObject(list);
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(url, content);
+            string result = await response.Content.ReadAsStringAsync();
+            Response responseData = JsonConvert.DeserializeObject<Response>(result);
+            await Task.Delay(2000);
             await DataStore.AddItemAsync(list);
 
             await Shell.Current.GoToAsync("..");

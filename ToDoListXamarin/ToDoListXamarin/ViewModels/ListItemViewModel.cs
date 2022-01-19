@@ -30,7 +30,7 @@ namespace ToDoListXamarin.ViewModels
             ObservableCollection<ToDoItem> ToDoItems2 = JsonConvert.DeserializeObject<ObservableCollection<ToDoItem>>(response);
             foreach (ToDoItem v in ToDoItems2)
             {
-                ToDoItems.Add(new ToDoItem(v.ToDoId, v.TodoText, v.Complete, v.ShoppingListId));
+                ToDoItems.Add(new ToDoItem(v.TodoText, v.Complete, v.ShoppingListId));
             }
         }
 
