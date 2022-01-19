@@ -39,7 +39,7 @@ namespace ToDoListXamarin.ViewModels
             IsBusy = true;
             try
             {
-                await Task.Delay(1000);
+                await Task.Delay(2000);
                 Lists.Clear();
                 var lists = await DataStore.GetItemsAsync(true);
                 foreach (var list in lists)

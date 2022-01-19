@@ -14,7 +14,7 @@ namespace ToDoListXamarin.Views
         }
 
 
-                private readonly HttpClient _client = new HttpClient();
+/*                private readonly HttpClient _client = new HttpClient();
                 private const string url = "http://10.130.54.140:5000/api/ShoppingListItems";
                 private ObservableCollection<ToDoItem> ToDoItems { get; set; }
                 async override protected void OnAppearing()

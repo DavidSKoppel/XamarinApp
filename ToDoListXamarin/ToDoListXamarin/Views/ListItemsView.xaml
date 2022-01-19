@@ -11,14 +11,16 @@
     
     <ContentPage.Content>
         <StackLayout>
+            <Label Padding="10" Text="{Binding Title}" FontSize="Large" />
             <CollectionView ItemsSource="{Binding ToDoItems}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="5" BackgroundColor="DodgerBlue" x:DataType="models:ToDoItem">
+                        <Grid Padding="7" x:DataType="models:ToDoItem">
                             <Label Grid.Column="1"
                             Text="{Binding TodoText}"
-                            FontAttributes="Italic">
+                            FontSize="Large">
                             </Label>
+                            <CheckBox Grid.Column="2"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
