@@ -16,6 +16,6 @@ namespace ToDoListXamarin.Models
         public DateTime ShoppingDate { get; set; }
         public ObservableCollection<ToDoItem> ShoppingItems { get; set; }
 
-        public ShoppingListAndItems() { }
+        public ShoppingListAndItems() {}
     }
 }
