@@ -14,6 +14,7 @@ namespace ToDoListXamarin
 
             DependencyService.Register<ListDataStore>();
             //MainPage = new ListItemsView();
+            DependencyService.Register<ListDataStore>();
             MainPage = new AppShell();
         }
 

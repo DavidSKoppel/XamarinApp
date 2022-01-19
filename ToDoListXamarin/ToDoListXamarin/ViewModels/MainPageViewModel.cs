@@ -25,8 +25,6 @@ namespace ToDoListXamarin.ViewModels
         
         public ObservableCollection<ShoppingList> ShoppingListItems { get; set; } = new ObservableCollection<ShoppingList>();
 
-        /*        public ObservableCollection<ShoppingListAndItems> ShoppingLists { get; set; }
-        */
         public MainPageViewModel()
         {
             Title = "Main";
@@ -73,14 +71,6 @@ namespace ToDoListXamarin.ViewModels
                 SetProperty(ref selectedList, value);
                 OnItemSelected(value);
             }
-            //ShowShoppingList();
-            
-/*            ItemTapped = new Command<ShoppingListAndItems>(OnItemSeleceted);
-*//*            ShoppingLists = new ObservableCollection<ShoppingListAndItems>();
-            
-            ShoppingLists.Add(new ShoppingListAndItems(1, "Todo 1", Convert.ToDateTime("12-01-20")));
-            ShoppingLists.Add(new ShoppingListAndItems(2, "Todo 2", Convert.ToDateTime("12-01-20")));
-            ShoppingLists.Add(new ShoppingListAndItems(3, "Todo 3", Convert.ToDateTime("12-01-20")));*/
         }
 
         async void OnItemSelected(ShoppingListAndItems item)
