@@ -17,14 +17,11 @@ namespace ToDoListXamarin.ViewModels
     public class MainPageViewModel : BaseViewModel
     {
         public ShoppingListAndItems selectedList;
-        public List<ShoppingList> ShoppingList { get; set; } = new List<ShoppingList>();
 
         public ObservableCollection<ShoppingListAndItems> Lists { get; }
         public Command LoadListsCommand { get; }
         public Command<ShoppingListAndItems> ItemTapped { get; }
         
-        public ObservableCollection<ShoppingList> ShoppingListItems { get; set; } = new ObservableCollection<ShoppingList>();
-
         public MainPageViewModel()
         {
             Title = "Main";

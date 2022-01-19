@@ -19,16 +19,23 @@ namespace ToDoListXamarin.ViewModels
             ToDoItems.Add(new ToDoItem(1, "Cheese", false, 1));
 
             SaveCommand = new Command(SaveListCommandAsync);
+            AddTodoCommand = new Command(AddTodoItem);
         }
 
         public Command SaveCommand { get; }
-        public ICommand AddTodoCommand => new Command(AddTodoItem);
+        public Command AddTodoCommand { get; }
         public string NewListTitle { get; set; }
-        public DateTime SelectedListDate { get; set; }
+        public DateTime SelectedListDate { get; }
         public string NewTodoInputValue { get; set; }
-        void AddTodoItem()
+        public void AddTodoItem()
         {
-            ToDoItems.Add(new ToDoItem(1, NewTodoInputValue, false, 1));
+            int newTodoId = 0;
+            foreach (var todoids in ToDoItems)
+            {
+                if (todoids.ToDoId > newTodoId)
+                    newTodoId = todoids.ToDoId;
+            }
+            ToDoItems.Add(new ToDoItem(newTodoId+1, NewTodoInputValue, false, 1));
         }
 
         public async void SaveListCommandAsync()
@@ -45,11 +52,11 @@ namespace ToDoListXamarin.ViewModels
                 Id = newId + 1,
                 Title = NewListTitle,
                 ShoppingDate = SelectedListDate,
+                ShoppingItems = ToDoItems
             };
             await DataStore.AddItemAsync(list);
 
             await Shell.Current.GoToAsync("..");
-            //ShoppingLists.Add(new ShoppingListAndItems(1, NewListTitle, SelectedListDate));
         }
     }
 }
