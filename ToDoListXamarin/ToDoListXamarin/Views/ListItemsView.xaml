@@ -10,17 +10,19 @@
     </ContentPage.BindingContext>
     
     <ContentPage.Content>
-        <StackLayout>
-            <Label Padding="10" Text="{Binding Title}" FontSize="Large" />
+        <StackLayout BackgroundColor="#f5f5dc">
+            <Label Padding="10" Text="{Binding Title}" FontSize="Large" FontAttributes="Bold" TextColor="#412B15" />
             <CollectionView ItemsSource="{Binding ToDoItems}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="7" x:DataType="models:ToDoItem">
+                        <Grid Padding="7" x:DataType="models:ToDoItem" >
+                            <BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" BackgroundColor="#412B15" HeightRequest="1" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
                             <Label Grid.Column="1"
                             Text="{Binding TodoText}"
-                            FontSize="Large">
+                                   FontAttributes="Italic"
+                            FontSize="Large" TextColor="#412B15">
                             </Label>
-                            <CheckBox Grid.Column="2"/>
+                            <CheckBox Grid.Column="4" Color="#412B15" IsChecked="{Binding Complete}"/>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

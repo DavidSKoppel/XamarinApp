@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:ToDoListXamarin" xmlns:local1="clr-namespace:ToDoListXamarin.Models" xmlns:local2="clr-namespace:ToDoListXamarin.ViewModels" x:DataType="local2:MainPageViewModel"
              x:Class="ToDoListXamarin.MainPage"
              Title="{Binding Title}"
+              BackgroundColor="#f5f5dc"
              >
 
     <ContentPage.ToolbarItems>
@@ -25,8 +26,8 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame CornerRadius="15" Padding="0">
-                            <Grid Padding="5" BackgroundColor="#f5f5dc" x:DataType="local1:ShoppingListAndItems">
+                        <Frame CornerRadius="10" Padding="0" BorderColor="BlanchedAlmond">
+                            <Grid Padding="5" BackgroundColor="#fff" x:DataType="local1:ShoppingListAndItems">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50" />
                                 <RowDefinition Height="30" />
@@ -37,6 +38,7 @@
                             </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0"
                                        Grid.ColumnSpan="3"
+                                       TextColor="#412B15"
                                 Text="{Binding Title}"
                                 FontAttributes="Bold"/>
                                 <Label Grid.Column="0"

@@ -22,7 +22,7 @@ namespace ToDoListXamarin.ViewModels
             ToDoItems.Add(new ToDoItem("Cheese", false, 1));
 
             SaveCommand = new Command(SaveListCommandAsync);
-            AddTodoCommand = new Command(AddTodoItem);
+            //AddTodoCommand = new Command(AddTodoItem);
         }
 
         public Command SaveCommand { get; }
@@ -30,10 +30,10 @@ namespace ToDoListXamarin.ViewModels
         public string NewListTitle { get; set; }
         public DateTime SelectedListDate { get; }
         public string NewTodoInputValue { get; set; }
-        public void AddTodoItem()
+/*        public void AddTodoItem()
         {
             ToDoItems.Add(new ToDoItem(NewTodoInputValue, false, 1));
-        }
+        }*/
 
         public async void SaveListCommandAsync()
         {
