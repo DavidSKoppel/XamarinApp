@@ -25,7 +25,8 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="5" BackgroundColor="DodgerBlue" x:DataType="local1:ShoppingListAndItems">
+                        <Frame CornerRadius="15" Padding="0">
+                            <Grid Padding="5" BackgroundColor="#f5f5dc" x:DataType="local1:ShoppingListAndItems">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50" />
                                 <RowDefinition Height="30" />
@@ -34,14 +35,16 @@
                                 <ColumnDefinition Width="60" />
                                 <ColumnDefinition Width="50" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0"
-                                   Grid.Row="0"
-                                Text="{Binding ShoppingDate}"
-                                FontAttributes="Italic"/>
-                            <Label Grid.Column="1"
+                                <Label Grid.Column="0"
+                                       Grid.ColumnSpan="3"
                                 Text="{Binding Title}"
-                                FontAttributes="Italic"/>
-                            <Label Grid.Column="1"
+                                FontAttributes="Bold"/>
+                                <Label Grid.Column="0"
+                                       Grid.Row="1"
+                                       Grid.ColumnSpan="3"
+                                Text="{Binding ShoppingDate}"
+                                />
+                                <Label Grid.Column="1"
                                 Text="{Binding ShoppingItems}"
                                 FontAttributes="Italic"
                                 VerticalOptions="End" />
@@ -53,6 +56,7 @@
                                 </TapGestureRecognizer>
                             </Grid.GestureRecognizers>
                         </Grid>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

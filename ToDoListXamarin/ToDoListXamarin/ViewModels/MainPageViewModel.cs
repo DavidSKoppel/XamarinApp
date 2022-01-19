@@ -24,7 +24,7 @@ namespace ToDoListXamarin.ViewModels
         
         public MainPageViewModel()
         {
-            Title = "Main";
+            Title = "Shopping Lists";
             Lists = new ObservableCollection<ShoppingListAndItems>();
             LoadListsCommand = new Command(async () => await LoadShoppingListsCommand());
 

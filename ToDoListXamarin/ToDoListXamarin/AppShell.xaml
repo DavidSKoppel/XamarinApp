@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ToDoListXamarin"
              Title="ToDoList"
-             x:Class="ToDoListXamarin.AppShell">
+             x:Class="ToDoListXamarin.AppShell"
+       BackgroundColor="#412B15">
     <TabBar>
         <ShellContent Title="Lists" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
     </TabBar>
