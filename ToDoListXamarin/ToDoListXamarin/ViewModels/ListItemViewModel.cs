@@ -21,6 +21,7 @@ namespace ToDoListXamarin.ViewModels
         public ObservableCollection<ToDoItem> ToDoItems { get; set; } = new ObservableCollection<ToDoItem>();
 
         public string Id { get; set; }
+        public bool Complete { get; set; }
 
         public async void ShowItemsList(int itemid)
         {
