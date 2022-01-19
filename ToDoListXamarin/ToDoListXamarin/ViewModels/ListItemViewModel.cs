@@ -18,6 +18,8 @@ namespace ToDoListXamarin.ViewModels
         private string title;
         private string shoppingdate;
 
+        public Command deleteList;
+
         public string Id { get; set; }
         public string Title
         {
@@ -57,6 +59,25 @@ namespace ToDoListXamarin.ViewModels
             {
                 Debug.WriteLine("Failed to Load Item");
             }
+        }
+
+        public Command DeleteList
+        {
+            get
+            {
+                if (deleteList == null)
+                {
+                    deleteList = new Command(PerformDeleteList);
+                }
+
+                return deleteList;
+            }
+        }
+
+        private async void PerformDeleteList()
+        {
+            await DataStore.DeleteItemAsync(itemId);
+            await Shell.Current.GoToAsync($"..");
         }
     }
 }
