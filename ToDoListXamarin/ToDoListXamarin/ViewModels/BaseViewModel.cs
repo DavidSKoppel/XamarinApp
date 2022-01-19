@@ -11,7 +11,7 @@ namespace ToDoListXamarin.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<ShoppingListAndItems> DataStore = new ListDataStore();
+        public IDataStore<ShoppingListAndItems> DataStore => DependencyService.Get<IDataStore<ShoppingListAndItems>>();
 
         bool isBusy = false;
         public bool IsBusy

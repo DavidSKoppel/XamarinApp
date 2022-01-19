@@ -1,4 +1,5 @@
 ﻿using System;
+using ToDoListXamarin.Services;
 using ToDoListXamarin.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,6 +12,7 @@ namespace ToDoListXamarin
         {
             InitializeComponent();
 
+            DependencyService.Register<ListDataStore>();
             //MainPage = new ListItemsView();
             MainPage = new AppShell();
         }

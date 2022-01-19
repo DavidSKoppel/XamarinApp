@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ToDoListXamarin.Models;
 using Xamarin.Forms;
 
 namespace ToDoListXamarin.ViewModels
@@ -17,8 +18,21 @@ namespace ToDoListXamarin.ViewModels
         private int itemId;
         private string title;
         private string shoppingdate;
+        public ObservableCollection<ToDoItem> ToDoItems { get; set; } = new ObservableCollection<ToDoItem>();
 
         public string Id { get; set; }
+
+        public async void ShowItemsList(int itemid)
+        {
+            string uri = "http://10.130.54.140:5000/api/ShoppingListItems/" + itemid;
+            HttpClient client = new HttpClient();
+            string response = await client.GetStringAsync(uri);
+            ObservableCollection<ToDoItem> ToDoItems2 = JsonConvert.DeserializeObject<ObservableCollection<ToDoItem>>(response);
+            foreach (ToDoItem v in ToDoItems2)
+            {
+                ToDoItems.Add(new ToDoItem(v.ToDoId, v.TodoText, v.Complete, v.ShoppingListId));
+            }
+        }
 
         public string Title
         {
@@ -53,6 +67,7 @@ namespace ToDoListXamarin.ViewModels
                 Id = item.Id.ToString();
                 Title = item.Title;
                 ShoppingDate = item.ShoppingDate.ToString();
+                ShowItemsList(itemId);
             }
             catch (Exception)
             {

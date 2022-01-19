@@ -12,20 +12,20 @@ namespace ToDoListXamarin.Services
 {
     public class ListDataStore : IDataStore<ShoppingListAndItems>
     {
-        public List<ShoppingListAndItems> lists { get; set; }
+        public ObservableCollection<ShoppingListAndItems> lists;
         
         public ListDataStore() 
         {
-            lists = new List<ShoppingListAndItems>();
+            lists = new ObservableCollection<ShoppingListAndItems>();
             ShowShoppingList();
         }
 
         public async void ShowShoppingList()
-            {
+        {
             string uri = "http://10.130.54.140:5000/api/ShoppingLists";
             HttpClient client = new HttpClient();
             string response = await client.GetStringAsync(uri);
-            lists = JsonConvert.DeserializeObject<List<ShoppingListAndItems>>(response);
+            lists = JsonConvert.DeserializeObject<ObservableCollection<ShoppingListAndItems>>(response);
         }
 
         public async Task<bool> AddItemAsync(ShoppingListAndItems item)

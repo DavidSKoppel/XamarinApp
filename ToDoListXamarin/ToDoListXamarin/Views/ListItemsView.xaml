@@ -1,23 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ToDoListXamarin.ViewModels"
+             xmlns:local="clr-namespace:ToDoListXamarin.ViewModels" xmlns:models="clr-namespace:ToDoListXamarin.Models"
+             x:DataType="local:ListItemViewModel"
              x:Class="ToDoListXamarin.Views.ListItemsView">
-
+    
+    <ContentPage.BindingContext>
+        <local:ListItemViewModel/>
+    </ContentPage.BindingContext>
     
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ItemListView" HasUnevenRows="True">
-                <ListView.ItemTemplate>
+            <CollectionView ItemsSource="{Binding ToDoItems}">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <FlexLayout>
-                                <Label Text="{Binding TodoText}" FontSize="Large"/>
-                            </FlexLayout>
-                        </ViewCell>
+                        <Grid Padding="5" BackgroundColor="DodgerBlue" x:DataType="models:ToDoItem">
+                            <Label Grid.Column="1"
+                            Text="{Binding TodoText}"
+                            FontAttributes="Italic">
+                            </Label>
+                        </Grid>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

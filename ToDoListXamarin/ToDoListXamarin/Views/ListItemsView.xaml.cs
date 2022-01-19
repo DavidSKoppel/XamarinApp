@@ -22,21 +22,6 @@ namespace ToDoListXamarin.Views
             InitializeComponent();
             
             BindingContext = new ListItemViewModel();
-
-            ShowItemsList();
-        }
-
-        private ObservableCollection<ToDoItem> ToDoItems { get; set; }
-
-
-        private async void ShowItemsList()
-        {
-            string uri = "http://10.130.54.140:5000/api/ShoppingListItems/" + 1;
-            HttpClient client = new HttpClient();
-            string response = await client.GetStringAsync(uri);
-            List<ToDoItem> myList = JsonConvert.DeserializeObject<List<ToDoItem>>(response);
-            ToDoItems = new ObservableCollection<ToDoItem>(myList);
-            ItemListView.ItemsSource = ToDoItems;
         }
 
 
