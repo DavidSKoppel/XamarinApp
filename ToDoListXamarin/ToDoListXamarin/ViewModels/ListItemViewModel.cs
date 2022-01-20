@@ -102,12 +102,12 @@ namespace ToDoListXamarin.ViewModels
 
         private async void PerformDeleteList()
         {
-            //await DataStore.DeleteItemAsync(itemId);
-
             HttpClient client = new HttpClient();
             string uri = "http://10.130.54.140:5000/api/ShoppingLists/" + itemId;
             client.DefaultRequestHeaders.Accept.Clear();
             HttpResponseMessage response = client.DeleteAsync(uri).Result;
+
+            await DataStore.DeleteItemAsync(itemId);
 
             await Shell.Current.GoToAsync($"..");
         }
