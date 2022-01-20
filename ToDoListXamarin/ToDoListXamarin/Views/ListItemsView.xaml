@@ -12,6 +12,7 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="#f5f5dc">
             <Label Padding="10" Text="{Binding Title}" FontSize="Large" FontAttributes="Bold" TextColor="#412B15" />
+            <Entry Text="{Binding NewTodoInputValue}" x:Name="TodoInput" Placeholder="Enter a Todo" ReturnCommand="{Binding AddTodoCommand}"/>
             <CollectionView ItemsSource="{Binding ToDoItems}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -27,10 +28,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        <StackLayout>
-            <Label Text="{Binding Id}" FontSize="Large"/>
-            <Label Text="{Binding Title}" FontSize="Large"/>
-            <Label Text="{Binding ShoppingDate}" FontSize="Large"/>
             <Button Text="Delete" Command="{Binding DeleteList}"></Button>
         </StackLayout>
     </ContentPage.Content>

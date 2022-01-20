@@ -20,6 +20,8 @@ namespace ToDoListXamarin.ViewModels
         private string shoppingdate;
         public ObservableCollection<ToDoItem> ToDoItems { get; set; } = new ObservableCollection<ToDoItem>();
 
+        public ObservableCollection<ToDoItem> TodoItems2 { get; set; } = new ObservableCollection<ToDoItem>();
+
         public Command deleteList;
 
         public string Id { get; set; }
@@ -91,9 +93,22 @@ namespace ToDoListXamarin.ViewModels
             }
         }
 
+        public ICommand AddTodoCommand => new Command(AddTodoItem);
+        public string NewTodoInputValue { get; set; }
+        void AddTodoItem()
+        {
+            ToDoItems.Add(new ToDoItem(NewTodoInputValue, false, itemId));
+        }
+
         private async void PerformDeleteList()
         {
-            await DataStore.DeleteItemAsync(itemId);
+            //await DataStore.DeleteItemAsync(itemId);
+
+            HttpClient client = new HttpClient();
+            string uri = "http://10.130.54.140:5000/api/ShoppingLists/" + itemId;
+            client.DefaultRequestHeaders.Accept.Clear();
+            HttpResponseMessage response = client.DeleteAsync(uri).Result;
+
             await Shell.Current.GoToAsync($"..");
         }
     }

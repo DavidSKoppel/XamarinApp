@@ -27,8 +27,8 @@
                 </ListView.ItemTemplate>
             </ListView>-->
         <StackLayout Orientation="Horizontal" Padding="20">
-            <Button BackgroundColor="#412B15" Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
-            <Button BackgroundColor="#412B15" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            <Button BackgroundColor="#412B15" Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand" TextColor="White"></Button>
+            <Button BackgroundColor="#412B15" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" TextColor="White"></Button>
         </StackLayout>
     </StackLayout>
 </ContentPage>
