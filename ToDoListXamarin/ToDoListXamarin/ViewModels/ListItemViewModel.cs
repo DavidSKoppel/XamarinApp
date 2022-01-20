@@ -20,6 +20,8 @@ namespace ToDoListXamarin.ViewModels
         private string shoppingdate;
         public ObservableCollection<ToDoItem> ToDoItems { get; set; } = new ObservableCollection<ToDoItem>();
 
+        public Command deleteList;
+
         public string Id { get; set; }
         public bool Complete { get; set; }
 
@@ -74,6 +76,25 @@ namespace ToDoListXamarin.ViewModels
             {
                 Debug.WriteLine("Failed to Load Item");
             }
+        }
+
+        public Command DeleteList
+        {
+            get
+            {
+                if (deleteList == null)
+                {
+                    deleteList = new Command(PerformDeleteList);
+                }
+
+                return deleteList;
+            }
+        }
+
+        private async void PerformDeleteList()
+        {
+            await DataStore.DeleteItemAsync(itemId);
+            await Shell.Current.GoToAsync($"..");
         }
     }
 }

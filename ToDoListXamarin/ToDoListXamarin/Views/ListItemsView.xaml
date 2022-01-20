@@ -27,6 +27,11 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+        <StackLayout>
+            <Label Text="{Binding Id}" FontSize="Large"/>
+            <Label Text="{Binding Title}" FontSize="Large"/>
+            <Label Text="{Binding ShoppingDate}" FontSize="Large"/>
+            <Button Text="Delete" Command="{Binding DeleteList}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
